@@ -1,0 +1,82 @@
+{
+  "id": "tour-acc-test-logos-001",
+  "slug": "acceptance-test-logos",
+  "title": "Acceptance test — logo comparison",
+  "kind": "images",
+  "methodology": "elo-pairwise",
+  "schemaVersion": 1,
+  "createdAt": "2026-05-19T00:35:00.000Z",
+  "candidates": [
+    {
+      "id": "logo-a",
+      "label": "Logo A — concentric circles",
+      "src": "/acceptance-logos/logo-a.png",
+      "alt": "Concentric green circles logo"
+    },
+    {
+      "id": "logo-b",
+      "label": "Logo B — diagonal stripes",
+      "src": "/acceptance-logos/logo-b.png",
+      "alt": "Clay and ink diagonal stripes"
+    },
+    {
+      "id": "logo-c",
+      "label": "Logo C — checkerboard",
+      "src": "/acceptance-logos/logo-c.png",
+      "alt": "Blue and white checkerboard logo"
+    }
+  ],
+  "config": {
+    "kFactors": {
+      "early": 40,
+      "mid": 24,
+      "late": 16
+    },
+    "minComparisonsPerPair": 3
+  },
+  "state": {
+    "pairings": [
+      {
+        "id": "logo-a",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "logo-b",
+        "elo": 1480,
+        "comparisons": 1,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 1
+      },
+      {
+        "id": "logo-c",
+        "elo": 1520,
+        "comparisons": 1,
+        "wins": 1,
+        "leftShown": 1,
+        "rightShown": 0
+      }
+    ],
+    "history": [
+      {
+        "round": 1,
+        "timestamp": "2026-05-18T22:39:27.655Z",
+        "leftId": "logo-c",
+        "rightId": "logo-b",
+        "contentIndex": 0,
+        "choice": "left",
+        "eloDeltaLeft": 20,
+        "eloDeltaRight": -20,
+        "msToDecide": 73132
+      }
+    ],
+    "theme": "light",
+    "finished": false,
+    "contentTemplateCount": 1
+  },
+  "lastActiveAt": "2026-05-18T22:39:27.872Z"
+}

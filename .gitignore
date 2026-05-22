@@ -1,0 +1,15 @@
+node_modules
+dist
+public
+.env
+.env.local
+.DS_Store
+*.log
+node_modules/.tmp
+
+# Appify build artifacts — regenerable via `npm run desktop:build`
+desktop/
+assets/icons/
+
+# Local-only acceptance screenshots
+tournament-acceptance-*.png

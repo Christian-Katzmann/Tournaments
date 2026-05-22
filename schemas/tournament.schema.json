@@ -1,0 +1,345 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tournaments.local/schemas/tournament.schema.json",
+  "title": "Tournament",
+  "description": "Canonical shape for a tournament file persisted under ~/Dev/Projects/Tournaments/tournaments/<slug>.json. One tournament = N candidates of a single kind, judged with a single methodology.",
+  "type": "object",
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "kind",
+    "methodology",
+    "schemaVersion",
+    "createdAt",
+    "candidates",
+    "config",
+    "state"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable opaque id (UUID recommended)."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "typography",
+        "color",
+        "copy",
+        "images",
+        "code",
+        "markdown",
+        "ai-output",
+        "freeform"
+      ]
+    },
+    "methodology": {
+      "type": "string",
+      "enum": [
+        "elo-pairwise",
+        "bradley-terry",
+        "bracket-4-seed",
+        "best-of-n",
+        "multi-axis",
+        "slider"
+      ]
+    },
+    "schemaVersion": { "type": "integer", "minimum": 1 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "lastActiveAt": { "type": "string", "format": "date-time" },
+    "candidates": {
+      "type": "array",
+      "minItems": 2,
+      "description": "Per-kind item shape is enforced by the allOf/if/then branches below."
+    },
+    "config": {
+      "type": "object",
+      "description": "Per-methodology configuration. Per-kind branches may also contribute (e.g., typography content templates)."
+    },
+    "state": {
+      "type": "object",
+      "description": "Mutable judgment state. May be empty for a freshly-created tournament; the running app fills this in.",
+      "additionalProperties": true,
+      "properties": {
+        "finished": { "type": "boolean" },
+        "history": { "type": "array" }
+      }
+    }
+  },
+  "$defs": {
+    "candidateBase": {
+      "type": "object",
+      "required": ["id", "label"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 }
+      }
+    },
+    "candidate_typography": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateBase" },
+        {
+          "type": "object",
+          "required": ["serif", "sans"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {},
+            "label": {},
+            "serif": { "type": "string", "minLength": 1 },
+            "sans": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "candidate_color": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateBase" },
+        {
+          "type": "object",
+          "required": ["hex"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {},
+            "label": {},
+            "hex": { "type": "string", "pattern": "^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$" },
+            "name": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "candidate_copy": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateBase" },
+        {
+          "type": "object",
+          "required": ["text"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {},
+            "label": {},
+            "text": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "candidate_images": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateBase" },
+        {
+          "type": "object",
+          "required": ["src"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {},
+            "label": {},
+            "src": { "type": "string", "minLength": 1 },
+            "alt": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "candidate_code": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateBase" },
+        {
+          "type": "object",
+          "required": ["language", "code"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {},
+            "label": {},
+            "language": { "type": "string", "minLength": 1 },
+            "code": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "candidate_markdown": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateBase" },
+        {
+          "type": "object",
+          "required": ["markdown"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {},
+            "label": {},
+            "markdown": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "candidate_ai_output": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateBase" },
+        {
+          "type": "object",
+          "required": ["response"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {},
+            "label": {},
+            "prompt": { "type": "string" },
+            "response": { "type": "string" },
+            "model": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "candidate_freeform": {
+      "allOf": [
+        { "$ref": "#/$defs/candidateBase" },
+        {
+          "type": "object",
+          "required": ["html"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {},
+            "label": {},
+            "html": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "config_elo_pairwise": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "kFactors": {
+          "type": "object",
+          "properties": {
+            "early": { "type": "number" },
+            "mid": { "type": "number" },
+            "late": { "type": "number" }
+          }
+        },
+        "minComparisonsPerPair": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "config_bradley_terry": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "maxIterations": { "type": "integer", "minimum": 1 },
+        "convergenceTolerance": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "config_bracket_4_seed": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "seeding": {
+          "type": "string",
+          "enum": ["manual", "shuffled"]
+        }
+      }
+    },
+    "config_best_of_n": {
+      "type": "object",
+      "required": ["roundSize"],
+      "additionalProperties": true,
+      "properties": {
+        "roundSize": { "type": "integer", "minimum": 2, "maximum": 6 }
+      }
+    },
+    "config_multi_axis": {
+      "type": "object",
+      "required": ["axes"],
+      "additionalProperties": true,
+      "properties": {
+        "axes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "label"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "label": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    "config_slider": {
+      "type": "object",
+      "required": ["min", "max"],
+      "additionalProperties": true,
+      "properties": {
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "step": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "typography" } }, "required": ["kind"] },
+      "then": { "properties": { "candidates": { "type": "array", "items": { "$ref": "#/$defs/candidate_typography" } } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "color" } }, "required": ["kind"] },
+      "then": { "properties": { "candidates": { "type": "array", "items": { "$ref": "#/$defs/candidate_color" } } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "copy" } }, "required": ["kind"] },
+      "then": { "properties": { "candidates": { "type": "array", "items": { "$ref": "#/$defs/candidate_copy" } } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "images" } }, "required": ["kind"] },
+      "then": { "properties": { "candidates": { "type": "array", "items": { "$ref": "#/$defs/candidate_images" } } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "code" } }, "required": ["kind"] },
+      "then": { "properties": { "candidates": { "type": "array", "items": { "$ref": "#/$defs/candidate_code" } } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "markdown" } }, "required": ["kind"] },
+      "then": { "properties": { "candidates": { "type": "array", "items": { "$ref": "#/$defs/candidate_markdown" } } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "ai-output" } }, "required": ["kind"] },
+      "then": { "properties": { "candidates": { "type": "array", "items": { "$ref": "#/$defs/candidate_ai_output" } } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "freeform" } }, "required": ["kind"] },
+      "then": { "properties": { "candidates": { "type": "array", "items": { "$ref": "#/$defs/candidate_freeform" } } } }
+    },
+    {
+      "if": { "properties": { "methodology": { "const": "elo-pairwise" } }, "required": ["methodology"] },
+      "then": { "properties": { "config": { "$ref": "#/$defs/config_elo_pairwise" } } }
+    },
+    {
+      "if": { "properties": { "methodology": { "const": "bradley-terry" } }, "required": ["methodology"] },
+      "then": { "properties": { "config": { "$ref": "#/$defs/config_bradley_terry" } } }
+    },
+    {
+      "if": { "properties": { "methodology": { "const": "bracket-4-seed" } }, "required": ["methodology"] },
+      "then": {
+        "properties": { "config": { "$ref": "#/$defs/config_bracket_4_seed" }, "candidates": { "minItems": 4, "maxItems": 4 } }
+      }
+    },
+    {
+      "if": { "properties": { "methodology": { "const": "best-of-n" } }, "required": ["methodology"] },
+      "then": { "properties": { "config": { "$ref": "#/$defs/config_best_of_n" } } }
+    },
+    {
+      "if": { "properties": { "methodology": { "const": "multi-axis" } }, "required": ["methodology"] },
+      "then": { "properties": { "config": { "$ref": "#/$defs/config_multi_axis" } } }
+    },
+    {
+      "if": { "properties": { "methodology": { "const": "slider" } }, "required": ["methodology"] },
+      "then": { "properties": { "config": { "$ref": "#/$defs/config_slider" } } }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "tour-mpbrvs69-zyszwg",
+  "slug": "smoke-test-copy-variants",
+  "title": "Smoke test — copy variants",
+  "kind": "copy",
+  "methodology": "elo-pairwise",
+  "schemaVersion": 1,
+  "createdAt": "2026-05-18T22:25:28.927Z",
+  "lastActiveAt": "2026-05-18T22:25:28.927Z",
+  "candidates": [
+    {
+      "id": "c-uk9lqxvs67",
+      "label": "Welcome back",
+      "text": "Welcome back"
+    },
+    {
+      "id": "c-x9e3tavs67",
+      "label": "Ready to continue?",
+      "text": "Ready to continue?"
+    },
+    {
+      "id": "c-mvl3jnvs67",
+      "label": "Resume — your draft is saved",
+      "text": "Resume — your draft is saved"
+    },
+    {
+      "id": "c-e9383xvs67",
+      "label": "Keep going where you left off",
+      "text": "Keep going where you left off"
+    }
+  ],
+  "config": {
+    "kFactors": {
+      "early": 40,
+      "mid": 24,
+      "late": 16
+    },
+    "minComparisonsPerPair": 3
+  },
+  "state": {
+    "finished": false,
+    "history": []
+  }
+}

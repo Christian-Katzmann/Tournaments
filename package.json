@@ -1,0 +1,38 @@
+{
+  "name": "tournaments",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-first tournament app for running comparison decisions across any content type.",
+  "scripts": {
+    "dev": "vite --port 5274",
+    "build": "tsc -b && vite build",
+    "start": "node server.mjs",
+    "test": "vitest run",
+    "desktop:icons": "APP_NAME='Tournaments' APP_SLUG='tournaments' ./scripts/desktop-icons.sh",
+    "desktop:build": "./scripts/desktop-build.sh",
+    "desktop:install": "./scripts/desktop-install.sh",
+    "desktop:quit": "./scripts/desktop-quit.sh"
+  },
+  "dependencies": {
+    "dompurify": "^3.4.5",
+    "highlight.js": "^11.11.1",
+    "marked": "^18.0.3",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/dompurify": "^3.0.5",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "tailwindcss": "^4.3.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12",
+    "vitest": "^3.2.0"
+  }
+}

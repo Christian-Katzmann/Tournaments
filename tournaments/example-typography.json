@@ -1,0 +1,55 @@
+{
+  "id": "tour-example-typography-0001",
+  "slug": "example-typography",
+  "title": "Example typography tournament",
+  "kind": "typography",
+  "methodology": "elo-pairwise",
+  "schemaVersion": 1,
+  "createdAt": "2026-05-18T10:00:00.000Z",
+  "candidates": [
+    {
+      "id": "p1",
+      "label": "Lora × Inter",
+      "serif": "lora",
+      "sans": "inter"
+    },
+    {
+      "id": "p2",
+      "label": "EB Garamond × Source Sans",
+      "serif": "eb-garamond",
+      "sans": "source-sans-3"
+    },
+    {
+      "id": "p3",
+      "label": "Cormorant × IBM Plex Sans",
+      "serif": "cormorant",
+      "sans": "ibm-plex-sans"
+    },
+    {
+      "id": "p4",
+      "label": "Source Serif × Inter",
+      "serif": "source-serif",
+      "sans": "inter"
+    }
+  ],
+  "config": {
+    "kFactors": {
+      "early": 40,
+      "mid": 24,
+      "late": 16
+    },
+    "minComparisonsPerPair": 3,
+    "contentTemplates": [
+      {
+        "id": "tpl-headline",
+        "headline": "Tilfredshedsundersøgelse",
+        "body": "Vi vil gerne høre, hvordan din oplevelse har været."
+      }
+    ]
+  },
+  "state": {
+    "finished": false,
+    "history": []
+  },
+  "lastActiveAt": "2026-05-18T22:16:07.398Z"
+}

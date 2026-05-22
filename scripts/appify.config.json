@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "Tournaments",
+      "slug": "tournaments",
+      "port": 4278,
+      "start_command": "node server.mjs",
+      "bundle_id": "com.user.tournaments",
+      "version": "0.1.0",
+      "polyfill_path": "",
+      "backend_port": null,
+      "backend_start_command": null
+    }
+  ]
+}

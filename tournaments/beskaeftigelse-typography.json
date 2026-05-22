@@ -1,0 +1,699 @@
+{
+  "id": "tour-beskaeftigelse-typography",
+  "slug": "beskaeftigelse-typography",
+  "title": "Beskæftigelse typography pairings",
+  "kind": "typography",
+  "methodology": "elo-pairwise",
+  "schemaVersion": 1,
+  "createdAt": "2026-05-18T22:46:43.643Z",
+  "lastActiveAt": "2026-05-18T22:46:43.643Z",
+  "candidates": [
+    {
+      "id": "newsreader__hanken-grotesk",
+      "label": "Newsreader × Hanken Grotesk",
+      "serif": "newsreader",
+      "sans": "hanken-grotesk"
+    },
+    {
+      "id": "newsreader__inter",
+      "label": "Newsreader × Inter",
+      "serif": "newsreader",
+      "sans": "inter"
+    },
+    {
+      "id": "newsreader__geist",
+      "label": "Newsreader × Geist",
+      "serif": "newsreader",
+      "sans": "geist"
+    },
+    {
+      "id": "newsreader__work-sans",
+      "label": "Newsreader × Work Sans",
+      "serif": "newsreader",
+      "sans": "work-sans"
+    },
+    {
+      "id": "newsreader__mulish",
+      "label": "Newsreader × Mulish",
+      "serif": "newsreader",
+      "sans": "mulish"
+    },
+    {
+      "id": "newsreader__lato",
+      "label": "Newsreader × Lato",
+      "serif": "newsreader",
+      "sans": "lato"
+    },
+    {
+      "id": "newsreader__ibm-plex-sans",
+      "label": "Newsreader × IBM Plex Sans",
+      "serif": "newsreader",
+      "sans": "ibm-plex-sans"
+    },
+    {
+      "id": "newsreader__public-sans",
+      "label": "Newsreader × Public Sans",
+      "serif": "newsreader",
+      "sans": "public-sans"
+    },
+    {
+      "id": "faustina__hanken-grotesk",
+      "label": "Faustina × Hanken Grotesk",
+      "serif": "faustina",
+      "sans": "hanken-grotesk"
+    },
+    {
+      "id": "faustina__inter",
+      "label": "Faustina × Inter",
+      "serif": "faustina",
+      "sans": "inter"
+    },
+    {
+      "id": "faustina__geist",
+      "label": "Faustina × Geist",
+      "serif": "faustina",
+      "sans": "geist"
+    },
+    {
+      "id": "faustina__work-sans",
+      "label": "Faustina × Work Sans",
+      "serif": "faustina",
+      "sans": "work-sans"
+    },
+    {
+      "id": "faustina__mulish",
+      "label": "Faustina × Mulish",
+      "serif": "faustina",
+      "sans": "mulish"
+    },
+    {
+      "id": "faustina__lato",
+      "label": "Faustina × Lato",
+      "serif": "faustina",
+      "sans": "lato"
+    },
+    {
+      "id": "faustina__ibm-plex-sans",
+      "label": "Faustina × IBM Plex Sans",
+      "serif": "faustina",
+      "sans": "ibm-plex-sans"
+    },
+    {
+      "id": "faustina__public-sans",
+      "label": "Faustina × Public Sans",
+      "serif": "faustina",
+      "sans": "public-sans"
+    },
+    {
+      "id": "source-serif-4__hanken-grotesk",
+      "label": "Source Serif 4 × Hanken Grotesk",
+      "serif": "source-serif-4",
+      "sans": "hanken-grotesk"
+    },
+    {
+      "id": "source-serif-4__inter",
+      "label": "Source Serif 4 × Inter",
+      "serif": "source-serif-4",
+      "sans": "inter"
+    },
+    {
+      "id": "source-serif-4__geist",
+      "label": "Source Serif 4 × Geist",
+      "serif": "source-serif-4",
+      "sans": "geist"
+    },
+    {
+      "id": "source-serif-4__work-sans",
+      "label": "Source Serif 4 × Work Sans",
+      "serif": "source-serif-4",
+      "sans": "work-sans"
+    },
+    {
+      "id": "source-serif-4__mulish",
+      "label": "Source Serif 4 × Mulish",
+      "serif": "source-serif-4",
+      "sans": "mulish"
+    },
+    {
+      "id": "source-serif-4__lato",
+      "label": "Source Serif 4 × Lato",
+      "serif": "source-serif-4",
+      "sans": "lato"
+    },
+    {
+      "id": "source-serif-4__ibm-plex-sans",
+      "label": "Source Serif 4 × IBM Plex Sans",
+      "serif": "source-serif-4",
+      "sans": "ibm-plex-sans"
+    },
+    {
+      "id": "source-serif-4__public-sans",
+      "label": "Source Serif 4 × Public Sans",
+      "serif": "source-serif-4",
+      "sans": "public-sans"
+    },
+    {
+      "id": "lora__hanken-grotesk",
+      "label": "Lora × Hanken Grotesk",
+      "serif": "lora",
+      "sans": "hanken-grotesk"
+    },
+    {
+      "id": "lora__inter",
+      "label": "Lora × Inter",
+      "serif": "lora",
+      "sans": "inter"
+    },
+    {
+      "id": "lora__geist",
+      "label": "Lora × Geist",
+      "serif": "lora",
+      "sans": "geist"
+    },
+    {
+      "id": "lora__work-sans",
+      "label": "Lora × Work Sans",
+      "serif": "lora",
+      "sans": "work-sans"
+    },
+    {
+      "id": "lora__mulish",
+      "label": "Lora × Mulish",
+      "serif": "lora",
+      "sans": "mulish"
+    },
+    {
+      "id": "lora__lato",
+      "label": "Lora × Lato",
+      "serif": "lora",
+      "sans": "lato"
+    },
+    {
+      "id": "lora__ibm-plex-sans",
+      "label": "Lora × IBM Plex Sans",
+      "serif": "lora",
+      "sans": "ibm-plex-sans"
+    },
+    {
+      "id": "lora__public-sans",
+      "label": "Lora × Public Sans",
+      "serif": "lora",
+      "sans": "public-sans"
+    },
+    {
+      "id": "alegreya__hanken-grotesk",
+      "label": "Alegreya × Hanken Grotesk",
+      "serif": "alegreya",
+      "sans": "hanken-grotesk"
+    },
+    {
+      "id": "alegreya__inter",
+      "label": "Alegreya × Inter",
+      "serif": "alegreya",
+      "sans": "inter"
+    },
+    {
+      "id": "alegreya__geist",
+      "label": "Alegreya × Geist",
+      "serif": "alegreya",
+      "sans": "geist"
+    },
+    {
+      "id": "alegreya__work-sans",
+      "label": "Alegreya × Work Sans",
+      "serif": "alegreya",
+      "sans": "work-sans"
+    },
+    {
+      "id": "alegreya__mulish",
+      "label": "Alegreya × Mulish",
+      "serif": "alegreya",
+      "sans": "mulish"
+    },
+    {
+      "id": "alegreya__lato",
+      "label": "Alegreya × Lato",
+      "serif": "alegreya",
+      "sans": "lato"
+    },
+    {
+      "id": "alegreya__ibm-plex-sans",
+      "label": "Alegreya × IBM Plex Sans",
+      "serif": "alegreya",
+      "sans": "ibm-plex-sans"
+    },
+    {
+      "id": "alegreya__public-sans",
+      "label": "Alegreya × Public Sans",
+      "serif": "alegreya",
+      "sans": "public-sans"
+    },
+    {
+      "id": "ibm-plex-serif__hanken-grotesk",
+      "label": "IBM Plex Serif × Hanken Grotesk",
+      "serif": "ibm-plex-serif",
+      "sans": "hanken-grotesk"
+    },
+    {
+      "id": "ibm-plex-serif__inter",
+      "label": "IBM Plex Serif × Inter",
+      "serif": "ibm-plex-serif",
+      "sans": "inter"
+    },
+    {
+      "id": "ibm-plex-serif__geist",
+      "label": "IBM Plex Serif × Geist",
+      "serif": "ibm-plex-serif",
+      "sans": "geist"
+    },
+    {
+      "id": "ibm-plex-serif__work-sans",
+      "label": "IBM Plex Serif × Work Sans",
+      "serif": "ibm-plex-serif",
+      "sans": "work-sans"
+    },
+    {
+      "id": "ibm-plex-serif__mulish",
+      "label": "IBM Plex Serif × Mulish",
+      "serif": "ibm-plex-serif",
+      "sans": "mulish"
+    },
+    {
+      "id": "ibm-plex-serif__lato",
+      "label": "IBM Plex Serif × Lato",
+      "serif": "ibm-plex-serif",
+      "sans": "lato"
+    },
+    {
+      "id": "ibm-plex-serif__ibm-plex-sans",
+      "label": "IBM Plex Serif × IBM Plex Sans",
+      "serif": "ibm-plex-serif",
+      "sans": "ibm-plex-sans"
+    },
+    {
+      "id": "ibm-plex-serif__public-sans",
+      "label": "IBM Plex Serif × Public Sans",
+      "serif": "ibm-plex-serif",
+      "sans": "public-sans"
+    }
+  ],
+  "config": {
+    "kFactors": {
+      "early": 40,
+      "mid": 24,
+      "late": 16
+    },
+    "minComparisonsPerPair": 3
+  },
+  "state": {
+    "pairings": [
+      {
+        "id": "newsreader__hanken-grotesk",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "newsreader__inter",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "newsreader__geist",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "newsreader__work-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "newsreader__mulish",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "newsreader__lato",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "newsreader__ibm-plex-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "newsreader__public-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "faustina__hanken-grotesk",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "faustina__inter",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "faustina__geist",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "faustina__work-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "faustina__mulish",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "faustina__lato",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "faustina__ibm-plex-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "faustina__public-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "source-serif-4__hanken-grotesk",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "source-serif-4__inter",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "source-serif-4__geist",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "source-serif-4__work-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "source-serif-4__mulish",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "source-serif-4__lato",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "source-serif-4__ibm-plex-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "source-serif-4__public-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "lora__hanken-grotesk",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "lora__inter",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "lora__geist",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "lora__work-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "lora__mulish",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "lora__lato",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "lora__ibm-plex-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "lora__public-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "alegreya__hanken-grotesk",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "alegreya__inter",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "alegreya__geist",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "alegreya__work-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "alegreya__mulish",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "alegreya__lato",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "alegreya__ibm-plex-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "alegreya__public-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "ibm-plex-serif__hanken-grotesk",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "ibm-plex-serif__inter",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "ibm-plex-serif__geist",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "ibm-plex-serif__work-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "ibm-plex-serif__mulish",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "ibm-plex-serif__lato",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "ibm-plex-serif__ibm-plex-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      },
+      {
+        "id": "ibm-plex-serif__public-sans",
+        "elo": 1500,
+        "comparisons": 0,
+        "wins": 0,
+        "leftShown": 0,
+        "rightShown": 0
+      }
+    ],
+    "history": [],
+    "theme": "light",
+    "finished": false
+  }
+}
