@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 2560px;
+    height: 1280px;
+    background: #f4f4f4;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+  .accent-strip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    background: #111111;
+  }
+  .left {
+    flex: 0 0 920px;
+    padding: 180px 80px 180px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .title {
+    font-size: 96px;
+    font-weight: 800;
+    color: #111111;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    margin-bottom: 36px;
+  }
+  .subtitle {
+    font-size: 34px;
+    font-weight: 400;
+    color: #6b6b6b;
+    line-height: 1.45;
+    margin-bottom: 64px;
+    max-width: 700px;
+  }
+  .tagline {
+    font-size: 26px;
+    font-weight: 400;
+    color: #9a9a9a;
+    line-height: 1.5;
+    max-width: 620px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 40px;
+  }
+  .right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 60px 80px 60px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .screenshot-frame {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.08), 0 2px 12px rgba(0,0,0,0.04);
+    overflow: hidden;
+    position: relative;
+  }
+  .screenshot-frame img {
+    display: block;
+    width: 1500px;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="accent-strip"></div>
+  <div class="left">
+    <div class="title">Tournaments</div>
+    <div class="subtitle">A local-first comparison-decision tool.</div>
+    <div class="tagline">Put N candidates side by side. Judge with a real methodology. Get a defensible ranking.</div>
+  </div>
+  <div class="right">
+    <div class="screenshot-frame">
+      <img src="../screenshots/01-color-comparison.png" />
+    </div>
+  </div>
+</body>
+</html>

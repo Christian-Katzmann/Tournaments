@@ -6,6 +6,10 @@ Eight kinds of content (`typography`, `color`, `copy`, `images`, `code`, `markdo
 
 Status: usable public alpha. The Node server and sample tournaments are portable; the optional desktop wrapper is macOS-only.
 
+![Two color candidates side by side in a pairwise Elo comparison](design/screenshots/01-color-comparison.png)
+
+*Click the candidate you prefer and the Elo ratings update live. Each judgment writes to a single JSON file — close the browser, come back later, pick up where you left off.*
+
 ## What This Is Not
 
 - Not a hosted bracket or polling service.
@@ -158,6 +162,14 @@ npm start         # full app at localhost:4278
 
 See [docs/development.md](docs/development.md) for the full development guide.
 
+## Public Assets
+
+Publication assets live in `design/`:
+
+- `design/screenshots/` contains the README hero and supporting screenshots.
+- `design/social/social-preview.png` is the GitHub social preview source.
+- `design/visual-principles.md` records the screenshot and social preview rules.
+
 ## Docs
 
 - [`AGENTS.md`](AGENTS.md) — operating rules for AI agents working in this repo
@@ -167,6 +179,11 @@ See [docs/development.md](docs/development.md) for the full development guide.
 - [`docs/development.md`](docs/development.md) — scripts, tests, common gotchas
 - [`docs/server.md`](docs/server.md) — REST endpoints with curl examples
 - [`schemas/README.md`](schemas/README.md) — candidate shapes per kind
+
+## Decisions
+
+- [0001 — Single-file tournament state](docs/decisions/0001-single-file-tournament-state.md)
+- [0002 — No hosted live demo yet](docs/decisions/0002-no-hosted-demo.md)
 
 ## License
 

@@ -84,6 +84,14 @@ Run from the repo root unless a script says otherwise.
   require the server to be down.
 - **Hardcoded port 4278** — don't move it without updating documentation.
 
+## Publication assets
+
+- `design/screenshots/` — product screenshots for the README and social surfaces.
+- `design/social/social-preview.png` — 2560x1280 GitHub social preview source.
+- `design/social/social-preview.html` — source HTML for regenerating the social preview.
+- `design/visual-principles.md` — rules for screenshots, social preview, and motion artifacts.
+- Regenerate screenshots from the sample color tournament (`examples/sample-color-tournament.json`).
+
 ## Do not
 
 - Do not commit local tournament data from `tournaments/`; they are gitignored.
