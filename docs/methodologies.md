@@ -15,8 +15,8 @@ finding a single winner.
 
 ## bradley-terry
 
-A maximum-likelihood ranking from any pile of pairwise judgments. Used in
-modelarena for tournaments where matches aren't perfectly balanced. Slower
+A maximum-likelihood ranking from any pile of pairwise judgments. Useful
+for tournaments where matches aren't perfectly balanced. Slower
 convergence than Elo but produces a tighter posterior. Best for "we already
 have the votes — what's the ranking?" rather than active judging.
 

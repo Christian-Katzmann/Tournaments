@@ -6,12 +6,13 @@
 | ------------------------ | ----------------------------------------------------------------- |
 | `npm install`            | Install dependencies                                              |
 | `npm start`              | Run the full app: `node server.mjs` at `http://localhost:4278`    |
+| `npm run start:sample`   | Start the server and load sample tournaments from `examples/`     |
 | `npm run dev`            | Vite component playground at `http://localhost:5274` (no backend) |
-| `npm run build`          | `tsc -b` + `vite build` → static assets in `public/`              |
+| `npm run build`          | `tsc -b` + `vite build` -> static assets in `public/`             |
 | `npm test`               | Vitest run: schema, math, server integration                      |
 | `npx tsc -b`             | Strict typecheck across project references                        |
-| `npm run desktop:build`  | Build `desktop/Tournaments.app`                                   |
-| `npm run desktop:install`| Copy app bundle to `~/Desktop/MyApps/Tournaments.app`             |
+| `npm run desktop:build`  | Build `desktop/Tournaments.app` (macOS only)                      |
+| `npm run desktop:install`| Copy app bundle to desktop app location (macOS only)              |
 | `npm run desktop:quit`   | Kill running wrapper window + Node server                         |
 
 ## Two ways to run
@@ -36,18 +37,16 @@ The fastest realistic loop is *component dev for layout work*, then
 - **Server file lives at `server.mjs` (ES module).** Not `server.js`. Don't
   rename — the appified launcher's start command is `node server.mjs`.
 - **Schema is the contract.** Editing `schemas/tournament.schema.json` ripples
-  to the `/tournament` skill (symlinked) and to every tournament file's
-  validity. Run `npm test` after edits.
+  to any paired skill and to every tournament file's validity. Run `npm test`
+  after edits.
 - **Atomic writes.** State POSTs go through `withFileLock` + atomic rename.
   Don't edit `tournaments/*.json` while the server is running — your write
   will get clobbered by the next state POST.
 - **Registry caching.** The server reads the registry JSON on every request;
   there's no in-memory cache. But external edits during a request can race —
-  prefer `npm run desktop:quit` before bulk-editing.
+  prefer stopping the server before bulk-editing.
 - **Appified launches reattach.** The launcher detects a still-running server
-  on its port and skips the boot — fast re-launches don't double-start. If
-  it ever attaches to a stranger's server, that's a bug; check
-  `~/Library/Logs/Tournaments/server.{pid,port}`.
+  on its port and skips the boot — fast re-launches don't double-start.
 - **TypeScript strict.** `tsconfig` enables `strict`, `noUncheckedIndexedAccess`,
   and project references. `npx tsc -b` is the truth — `vite build` cuts
   corners.
@@ -63,8 +62,7 @@ The fastest realistic loop is *component dev for layout work*, then
 3. Add the candidate shape to `schemas/tournament.schema.json`
    (`candidate_<name>` def + the `if/then` branch).
 4. Add a sample candidate set to `src/dev/kinds.tsx`.
-5. Add a `templates/<name>.example.json` to `~/Dev/skills/tournament/`.
-6. `npm test` to confirm the schema still validates the existing example.
+5. `npm test` to confirm the schema still validates the existing example.
 
 ## Adding a methodology
 

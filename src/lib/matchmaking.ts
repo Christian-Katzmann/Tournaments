@@ -1,9 +1,6 @@
 /**
- * Three-phase matchmaker: coverage → stabilization → refinement.
- *
- * Ported verbatim from besk-typography-tournament/src/lib/matchmaking.ts.
- * Counterbalances left/right exposure and avoids back-to-back repeats of
- * the same pairing.
+ * Three-phase matchmaker: coverage -> stabilization -> refinement.
+ * Counterbalances left/right exposure and avoids back-to-back repeats.
  */
 
 import type { Pairing } from './elo';

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Migrate a saved typography-tournament localStorage value (from the
-// standalone besk-typography-tournament app) into a Tournaments JSON file.
+// Migrate a saved typography-tournament localStorage value into a
+// Tournaments JSON file.
 //
 // Two modes:
 //   1. Fresh seed (no input)  — produces a tournament with all 48 serif×sans

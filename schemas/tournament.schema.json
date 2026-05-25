@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://tournaments.local/schemas/tournament.schema.json",
   "title": "Tournament",
-  "description": "Canonical shape for a tournament file persisted under ~/Dev/Projects/Tournaments/tournaments/<slug>.json. One tournament = N candidates of a single kind, judged with a single methodology.",
+  "description": "Canonical shape for a tournament file persisted under tournaments/<slug>.json. One tournament = N candidates of a single kind, judged with a single methodology.",
   "type": "object",
   "required": [
     "id",

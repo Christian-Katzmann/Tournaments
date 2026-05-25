@@ -1,0 +1,25 @@
+{
+  "id": "tour-sample-color",
+  "slug": "sample-color",
+  "title": "Brand accent color",
+  "kind": "color",
+  "methodology": "elo-pairwise",
+  "schemaVersion": 1,
+  "createdAt": "2026-01-01T12:00:00.000Z",
+  "candidates": [
+    { "id": "c1", "label": "Indigo", "hex": "#4F46E5", "name": "Indigo 600" },
+    { "id": "c2", "label": "Emerald", "hex": "#059669", "name": "Emerald 600" },
+    { "id": "c3", "label": "Amber", "hex": "#D97706", "name": "Amber 600" },
+    { "id": "c4", "label": "Rose", "hex": "#E11D48", "name": "Rose 600" },
+    { "id": "c5", "label": "Cyan", "hex": "#0891B2", "name": "Cyan 600" },
+    { "id": "c6", "label": "Violet", "hex": "#7C3AED", "name": "Violet 600" }
+  ],
+  "config": {
+    "kFactors": { "early": 40, "mid": 24, "late": 16 },
+    "minComparisonsPerPair": 3
+  },
+  "state": {
+    "finished": false,
+    "history": []
+  }
+}

@@ -1,11 +1,5 @@
 /**
- * Pure 4-seed double-elimination bracket logic.
- *
- * Extracted from modelarena/src/lib/tournament.ts. modelarena layered a
- * model→generation indirection on top (each model produced a per-round
- * generation row); Tournaments compares static candidates directly, so
- * the indirection is dropped here and seeds/votes are expressed in
- * candidate IDs.
+ * Pure 4-seed single-elimination bracket logic.
  *
  * Structure: 4 seeds → b1 (1v2), b2 (3v4) → b3 (winners' final, decides
  * 1st and 2nd), b4 (losers' final, decides 3rd and 4th). If b3 is

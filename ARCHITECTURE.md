@@ -1,6 +1,6 @@
 # Tournaments — Architecture
 
-A local-first app for running comparison decisions across any content type, using rigorous judgment methodologies. Sibling to the Campaigns app pattern.
+A local-first app for running comparison decisions across any content type, using rigorous judgment methodologies.
 
 ## North-star principle
 
@@ -18,7 +18,7 @@ Closed taxonomy at launch, extensible later:
 
 | kind | candidate shape | preview renderer |
 |---|---|---|
-| `typography` | `{ id, label, serif: fontId, sans: fontId }` plus shared Danish content templates | text rendered in serif/sans on the live product canvas |
+| `typography` | `{ id, label, serif: fontId, sans: fontId }` plus shared content templates | text rendered in serif/sans on the live product canvas |
 | `color` | `{ id, label, hex, name? }` | swatch + name + sample text on the color |
 | `copy` | `{ id, label, text }` | text rendered on a canvas (headline, paragraph, CTA) |
 | `images` | `{ id, label, src }` (local path or URL) | image, fitted to a fixed aspect ratio |
@@ -31,33 +31,21 @@ Closed taxonomy at launch, extensible later:
 
 | methodology | best when | math source |
 |---|---|---|
-| `elo-pairwise` | pool 8+, want stable per-pairing rating | tonight's typography tournament |
-| `bradley-terry` | pool 8+, want rigorous probabilistic ranks | copied from `modelarena/src/server/bradley-terry.ts` |
-| `bracket-4-seed` | pool exactly 4, want decisive winner | copied from `modelarena/src/lib/tournament.ts` |
-| `best-of-n` | small pool (3-6), each round shows N candidates and you pick best | adapted from `modelarena/src/components/voting/BestOfNStepView.tsx` |
-| `multi-axis` | multiple criteria matter ("best for mobile" + "best for desktop") | adapted from `modelarena/src/components/voting/MultiAxisStepView.tsx` |
-| `slider` | continuous rating (e.g., 1-10 quality) | adapted from `modelarena/src/components/voting/SliderStepView.tsx` |
+| `elo-pairwise` | pool 8+, want stable per-pairing rating | adapted from a typography comparison prototype |
+| `bradley-terry` | pool 8+, want rigorous probabilistic ranks | maximum-likelihood ranking algorithm |
+| `bracket-4-seed` | pool exactly 4, want decisive winner | single-elimination bracket logic |
+| `best-of-n` | small pool (3-6), each round shows N candidates and you pick best | group-comparison selection |
+| `multi-axis` | multiple criteria matter ("best for mobile" + "best for desktop") | independent multi-criteria scoring |
+| `slider` | continuous rating (e.g., 1-10 quality) | direct continuous rating |
 
 ### Axis 3 — `candidate count`
 
-Determines coverage strategy and total comparisons. The Elo matchmaker tonight has three phases (coverage / stabilization / refinement); same pattern generalizes.
+Determines coverage strategy and total comparisons. The Elo matchmaker has three phases (coverage / stabilization / refinement); same pattern generalizes.
 
-## What we copy from modelarena (one-way, no coupling)
-
-Files to copy into `lib/`, then evolve independently:
-
-- `src/server/bradley-terry.ts` → `lib/bradley-terry.ts`
-- `src/server/ratings.ts` → reference only; we have simpler ratings in `lib/elo.ts`
-- `src/lib/tournament.ts` (bracket logic) → `lib/bracket.ts`
-- `src/lib/stability.ts` → `lib/stability.ts` (directional/preliminary/stable tiers)
-- `src/components/voting/*.tsx` → reference only; redesign UI fresh per kit verdict
-
-After copy: zero coupling. ïdea.com / modelarena can do whatever it wants.
-
-## Pattern from the typography tournament (kept)
+## Elo-pairwise patterns
 
 - Adaptive K-factor (K=40 / 24 / 16 by comparison count)
-- Coverage phase → stabilization (≥3 per pairing) → refinement (close-Elo matchups)
+- Coverage phase then stabilization (3+ per pairing) then refinement (close-Elo matchups)
 - Counterbalanced left/right; no back-to-back pairing repeats
 - Skip = no info (not penalized, not credited)
 - Single-step undo with delta reversal
@@ -69,111 +57,62 @@ After copy: zero coupling. ïdea.com / modelarena can do whatever it wants.
 ## App architecture
 
 ```
-~/Dev/Projects/Tournaments/
-├── server.mjs                          # Node HTTP, mirrors Campaigns/server.mjs
+<project-root>/
+├── server.mjs                          # Node HTTP, vanilla http.createServer
 ├── package.json
 ├── public/                             # Static frontend assets, served by server.mjs
-│   ├── index.html                      # SPA shell
-│   ├── homescreen.html or routes/      # Library of all tournaments
-│   └── tournament/                     # The judgment UI
-├── tournaments/                        # Per-tournament JSON files live here
-│   └── <slug>.json                     # Example: beskaeftigelse-typography.json
+│   ├── index.html                      # SPA shell (output of vite build)
+│   └── assets/                         # JS/CSS bundles
+├── src/                                # React + TypeScript source
+│   ├── App.tsx                         # Router: /, /new, /t/:id, /dev/kinds
+│   ├── components/                     # UI shell
+│   ├── hooks/                          # useTournament, useKeyboard
+│   ├── lib/                            # Pure modules: elo, matchmaking, etc.
+│   │   └── kinds/                      # Per-kind renderer + logic
+│   └── dev/                            # /dev/kinds preview page
+├── tournaments/                        # Per-tournament JSON files (gitignored)
+│   └── <slug>.json
 ├── schemas/
-│   └── tournament.schema.json          # Single source of truth; skill vendors this
-├── lib/
-│   ├── elo.ts                          # From typography app
-│   ├── matchmaking.ts                  # From typography app
-│   ├── bradley-terry.ts                # From modelarena
-│   ├── bracket.ts                      # From modelarena
-│   ├── stability.ts                    # From modelarena
-│   └── kinds/                          # Per-kind renderer logic
-│       ├── typography.ts
-│       ├── color.ts
-│       ├── ...
-│       └── freeform.ts
-├── desktop/                            # Appify output goes here
-└── scripts/
-    └── desktop-*.sh                    # Standard /appify scripts
+│   └── tournament.schema.json          # Single source of truth
+├── examples/                           # Sample tournament files for new users
+├── scripts/                            # Desktop launcher pipeline (macOS)
+└── docs/                               # Reference documentation
+```
 
+Platform-specific state (macOS defaults shown):
+
+```
 ~/Library/Application Support/Tournaments/
 └── registry.json                       # { id, slug, filePath, title, kind, createdAt, lastActiveAt }
 
 ~/Library/Logs/Tournaments/
 ├── server.log
 ├── server.pid
-└── server.port                         # Runtime port for the skill to discover
-
-~/Desktop/MyApps/
-└── Tournaments.app                     # appified launcher
+└── server.port                         # Runtime port for paired skills to discover
 ```
 
 ## Server contract
 
-Port: default 4278 (echoing Campaigns' 4178 with a +100). Persisted at `~/Library/Logs/Tournaments/server.port`.
+Port: default 4278. Persisted to the platform-specific logs directory on startup.
 
 ```
-GET  /                       → SPA shell (homescreen)
-GET  /t/:id                  → SPA shell (tournament view, hydrated client-side)
-GET  /api/registry           → List all registered tournaments
-POST /api/registry           → { filePath }; register a new tournament file. Returns { id }
-GET  /api/tournament/:id     → Full tournament JSON (file + persisted state)
-POST /api/tournament/:id/state → Persist judgment state (mirrors localStorage role)
-DELETE /api/registry/:id     → Unregister (does not delete the file)
+GET  /                       -> SPA shell (homescreen)
+GET  /t/:id                  -> SPA shell (tournament view, hydrated client-side)
+GET  /api/registry           -> List all registered tournaments
+POST /api/registry           -> { filePath }; register a new tournament file. Returns { id }
+GET  /api/tournament/:id     -> Full tournament JSON (file + persisted state)
+POST /api/tournament/:id/state -> Persist judgment state
+POST /api/tournament         -> Create a new tournament from JSON body
+DELETE /api/registry/:id     -> Unregister (does not delete the file)
 ```
 
-State persistence migrates from localStorage (typography app) to server-side JSON files. The browser still keeps a localStorage cache for snappy resume, but the source of truth is the file. This lets the app survive cache clears, browser switches, and (later) machine moves via dotfile sync.
-
-## Homescreen UX
-
-Library view of all registered tournaments, similar to Campaigns:
-
-```
-TOURNAMENTS
-─────────────────────────────────────
-Beskæftigelse typography      Round 247 / ~300        typography · elo-pairwise
-Logo concepts for Momó         3 of 6 battles          images · bracket-4-seed
-Hero copy variants             14 of ~40 done          copy · elo-pairwise
-─────────────────────────────────────
-+ New tournament              (uses /tournament skill, or in-app create flow)
-```
-
-Click a tournament → tournament view. Methodology and kind shown as small tags. Progress shown in tournament-specific terms.
-
-## The /tournament skill (kit per /kit-the-skill verdict)
-
-```
-~/.claude/skills/tournament/
-├── SKILL.md                          # distillation, kind/methodology selection
-├── schemas/
-│   └── tournament.schema.json        # SYMLINK to the Tournaments app's schema file
-├── templates/
-│   ├── typography.example.json       # one canonical example per kind
-│   ├── color.example.json
-│   ├── copy.example.json
-│   ├── images.example.json
-│   ├── code.example.json
-│   ├── markdown.example.json
-│   ├── ai-output.example.json
-│   └── freeform.example.json
-└── bin/
-    └── create-tournament.sh          # validate → write file → POST to server → emit URL
-```
-
-Single schema source. Skill symlinks the canonical schema from the Tournaments repo. No drift possible.
-
-## Migration of the typography tournament
-
-The Playground app at `~/Dev/Playground/besk-typography-tournament/` becomes Tournaments' **kind=typography** seed example. Specifically:
-
-- Its `content.ts` (Danish templates), `fonts.ts` (font registry), and the card layout become the `typography` kind's content + renderer.
-- Its `elo.ts`, `matchmaking.ts`, `persistence.ts` move into `lib/` and become methodology-agnostic.
-- The user's in-progress judging session migrates: import the current localStorage JSON as the initial state file. They resume from where they stopped.
+State persistence lives in server-side JSON files. The browser keeps a localStorage cache for snappy resume, but the source of truth is the file. This lets the app survive cache clears, browser switches, and machine moves via dotfile sync.
 
 ## Non-goals (the explicit list)
 
 - **No multi-user/sharing.** Local only.
 - **No cloud sync.** State is local. Dotfile sync is the user's concern.
 - **No analytics, no telemetry.** Nothing leaves the machine.
-- **No tournament editing once started.** Adding/removing candidates mid-tournament corrupts the math. (Future feature: `clone-with-modifications`.)
+- **No tournament editing once started.** Adding/removing candidates mid-tournament corrupts the math.
 - **No real-time leaderboard during judging.** Could bias the user. Standings only on the Results page or via explicit "Show standings" action.
 - **No AI agent that judges for you.** The whole point is your taste.

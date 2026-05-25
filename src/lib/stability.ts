@@ -1,8 +1,6 @@
 /**
  * Sample-size thresholds for how we present rating confidence in the UI.
  *
- * Copied as-is from modelarena/src/lib/stability.ts.
- *
  * "Game count" means the number of pairwise comparisons involving the
  * item (ties contribute to both sides). The spec:
  *   <50         directional — gray out; CI is wide; do not trust

@@ -2,9 +2,6 @@
  * Bradley-Terry model — iterative MM solver with Fisher-information
  * standard errors.
  *
- * Copied from modelarena/src/server/bradley-terry.ts. No external imports
- * to strip; the original module is already self-contained.
- *
  * Model: for two items i, j with strengths p_i, p_j > 0, the probability
  * i beats j is p_i / (p_i + p_j).
  *

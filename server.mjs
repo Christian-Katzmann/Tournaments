@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { createReadStream } from 'node:fs';
+import { createReadStream, readdirSync } from 'node:fs';
 import { mkdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { homedir } from 'node:os';
@@ -722,7 +722,38 @@ function listenWithFallback(server, initial) {
 const isMainModule = import.meta.url === pathToFileURL(process.argv[1] ?? '').href;
 
 if (isMainModule) {
-  const { port } = await startServer();
+  const sampleFlag = process.argv.includes('--sample');
+  const { port, paths } = await startServer();
+
+  if (sampleFlag) {
+    const examplesDir = path.join(__dirname, 'examples');
+    try {
+      const files = readdirSync(examplesDir).filter((f) => f.endsWith('.json'));
+      for (const file of files) {
+        const src = path.join(examplesDir, file);
+        const data = JSON.parse(await readFile(src, 'utf8'));
+        const { filePath } = await pickSlugFilePath(paths.tournamentsDir, data.slug);
+        await atomicWriteJson(filePath, { ...data, slug: path.basename(filePath, '.json') });
+        const registry = JSON.parse(await readFile(paths.registryPath, 'utf8'));
+        const now = new Date().toISOString();
+        registry.push({
+          id: data.id,
+          slug: path.basename(filePath, '.json'),
+          title: data.title,
+          kind: data.kind,
+          methodology: data.methodology,
+          filePath,
+          createdAt: data.createdAt ?? now,
+          lastActiveAt: now,
+        });
+        await atomicWriteJson(paths.registryPath, registry);
+        console.log(`  Loaded sample: ${data.title}`);
+      }
+    } catch (err) {
+      console.log(`  (no sample tournaments found in examples/)`);
+    }
+  }
+
   console.log(`Tournaments: http://localhost:${port}`);
   console.log(`Logs: ${path.join(homedir(), 'Library', 'Logs', 'Tournaments')}`);
   for (const signal of ['SIGINT', 'SIGTERM']) {

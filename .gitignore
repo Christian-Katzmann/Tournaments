@@ -13,3 +13,8 @@ assets/icons/
 
 # Local-only acceptance screenshots
 tournament-acceptance-*.png
+
+# Local tournament data, campaigns, and plans belong to each user's workspace.
+tournaments/
+campaigns/
+plans/

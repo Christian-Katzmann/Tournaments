@@ -1,9 +1,5 @@
 /**
  * Adaptive-K Elo for pairwise tournaments.
- *
- * Ported verbatim from besk-typography-tournament/src/lib/elo.ts. The
- * Pairing type is kept minimal here so this module is candidate-shape
- * agnostic and reusable across every tournament `kind`.
  */
 
 export const INITIAL_ELO = 1500;

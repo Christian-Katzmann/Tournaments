@@ -1,0 +1,22 @@
+{
+  "id": "tour-sample-copy",
+  "slug": "sample-copy",
+  "title": "Landing page headline",
+  "kind": "copy",
+  "methodology": "best-of-n",
+  "schemaVersion": 1,
+  "createdAt": "2026-01-01T12:00:00.000Z",
+  "candidates": [
+    { "id": "c1", "label": "Direct", "text": "Ship faster with less overhead." },
+    { "id": "c2", "label": "Question", "text": "What if your tools stayed out of your way?" },
+    { "id": "c3", "label": "Bold", "text": "The last project manager you will ever need." },
+    { "id": "c4", "label": "Understated", "text": "A quiet tool for focused work." }
+  ],
+  "config": {
+    "roundSize": 4
+  },
+  "state": {
+    "finished": false,
+    "history": []
+  }
+}

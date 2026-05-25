@@ -1,12 +1,11 @@
 # Migrations
 
-## Standalone typography app → Tournaments (one-time)
+## Standalone typography app -> Tournaments (one-time)
 
-The `besk-typography-tournament` Vite app at
-`~/Dev/Playground/besk-typography-tournament/` was the seed for the
-`typography` kind. Code moved into `src/lib/kinds/typography/` (renderer,
-fonts, content) in step 3.1 of the build campaign. The judging state — Elo
-ratings, history, pairings — was migrated by the script described below.
+The seed for the `typography` kind was a standalone Vite app that ran a single
+typography comparison. Code moved into `src/lib/kinds/typography/` (renderer,
+fonts, content). The judging state — Elo ratings, history, pairings — can be
+migrated by the script described below.
 
 ### Migrating an in-progress judging session
 
@@ -14,9 +13,9 @@ The standalone app stored its full state in `localStorage` under the key
 `besk-typography-tournament-v1`. To carry that state into Tournaments:
 
 1. Open the standalone app in the same browser where you were judging.
-2. DevTools → Application → Local Storage → `http://localhost:5173` (or wherever
-   it ran). Copy the value of `besk-typography-tournament-v1` to the clipboard.
-3. In `~/Dev/Projects/Tournaments/`:
+2. DevTools -> Application -> Local Storage. Copy the value of
+   `besk-typography-tournament-v1` to the clipboard.
+3. In the Tournaments project root:
 
    ```bash
    pbpaste | node scripts/migrate-typography-state.mjs --from -
@@ -37,7 +36,7 @@ Run with no arguments:
 node scripts/migrate-typography-state.mjs
 ```
 
-You get a fresh tournament with all 48 serif×sans pairings at Elo 1500 and an
+You get a fresh tournament with all 48 serif x sans pairings at Elo 1500 and an
 empty history.
 
 ### What the script preserves
@@ -60,10 +59,3 @@ If a migrated pairing or history entry references a font id that isn't in the
 current candidate set, the script prints a warning and drops that entry. The
 remaining state is still written. Skim the warnings — if many entries dropped,
 the source state may have been hand-edited.
-
-### After migration
-
-The standalone app at `~/Dev/Playground/besk-typography-tournament/` stays put
-for now. Re-judge the same pairings in Tournaments across a few sessions to
-confirm the new shell behaves the same way the standalone one did. Then delete
-the standalone repo.

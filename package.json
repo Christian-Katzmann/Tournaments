@@ -1,14 +1,36 @@
 {
-  "name": "tournaments",
+  "name": "tournaments-app",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
-  "description": "Local-first tournament app for running comparison decisions across any content type.",
+  "description": "Local-first comparison-decision tool for running tournaments across any content type.",
+  "license": "MIT",
+  "author": "Christian Katzmann",
+  "homepage": "https://github.com/Christian-Katzmann/Tournaments#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Christian-Katzmann/Tournaments.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Christian-Katzmann/Tournaments/issues"
+  },
+  "keywords": [
+    "tournaments",
+    "comparison",
+    "elo",
+    "ranking",
+    "local-first",
+    "ai-coding"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite --port 5274",
     "build": "tsc -b && vite build",
     "start": "node server.mjs",
+    "start:sample": "node server.mjs --sample",
     "test": "vitest run",
+    "check": "npx tsc -b && vitest run",
     "desktop:icons": "APP_NAME='Tournaments' APP_SLUG='tournaments' ./scripts/desktop-icons.sh",
     "desktop:build": "./scripts/desktop-build.sh",
     "desktop:install": "./scripts/desktop-install.sh",
